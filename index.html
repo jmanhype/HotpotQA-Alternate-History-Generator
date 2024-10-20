@@ -72,6 +72,13 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
         ul, ol {
             padding-left: 20px;
         }
@@ -125,6 +132,7 @@
             <li><a href="#introduction">Introduction</a></li>
             <li><a href="#system-architecture">System Architecture</a></li>
             <li><a href="#key-components">Key Components</a></li>
+            <li><a href="#aflow-implementation">AFLOW Algorithm Implementation</a></li>
             <li><a href="#optimization-process">Optimization Process</a></li>
             <li><a href="#workflow-execution">Workflow Execution</a></li>
             <li><a href="#prompt-engineering">Prompt Engineering</a></li>
@@ -196,6 +204,56 @@
 
     <h3>Configuration Manager</h3>
     <p>The Configuration Manager loads and manages system configurations, including model settings, API keys, and optimization parameters.</p>
+
+    <h2 id="aflow-implementation">AFLOW Algorithm Implementation</h2>
+    <p>The HotpotQA Alternate History Generator implements a version of the AFLOW (Automated Flow) Algorithm, adapted for the specific task of generating alternate historical scenarios. Here's how the system implements key parts of the algorithm:</p>
+
+    <h3>Initialization</h3>
+    <pre><code>class Optimizer:
+    def __init__(
+            self,
+            dataset: DatasetType,
+            question_type: QuestionType,
+            opt_llm_config,
+            exec_llm_config,
+            operators: List,
+            sample: int,
+            check_convergence: bool = False,
+            optimized_path: str = None,
+            initial_round: int = 1,
+            max_rounds: int = 20
+    ) -> None:
+        # ... initialization code ...
+</code></pre>
+
+    <h3>Main Optimization Loop</h3>
+    <pre><code>async def optimize(self, mode: OptimizerType = "Graph"):
+    for opt_round in range(self.max_rounds):
+        # ... optimization logic ...
+        score = await self._optimize_graph()
+        # ... convergence checking ...
+</code></pre>
+
+    <h3>Parent Selection</h3>
+    <pre><code>top_rounds = self.data_utils.get_top_rounds(self.sample)
+sample = self.data_utils.select_round(top_rounds)
+</code></pre>
+
+    <h3>Optimizer Procedure</h3>
+    <pre><code>graph_optimize_prompt = self.graph_utils.create_graph_optimize_prompt(
+    experience, sample["score"], graph[0], prompt, operator_description, self.type, log_data,
+    additional_instructions="Generate plausible alternate historical scenarios based on the given HotpotQA questions."
+)
+graph_optimize_node = await ActionNode.from_pydantic(GraphOptimize).fill(
+    context=graph_optimize_prompt, mode="context_fill", llm=self.optimize_llm
+)
+response = await self.graph_utils.get_graph_optimize_response(graph_optimize_node)
+</code></pre>
+
+    <h3>Executor Procedure</h3>
+    <pre><code>avg_score = await self.evaluation_utils.evaluate_graph(self, directory, validation_n, data, initial=False,
+                                                       evaluate_alternate_history=True)
+</code></pre>
 
     <h2 id="optimization-process">Optimization Process</h2>
     <p>The optimization process is a recursive algorithm that iteratively improves the alternate history generation strategy:</p>
@@ -368,16 +426,66 @@
         <li>Support for different language models</li>
     </ul>
 
+    <p>The AFLOW Algorithm implementation allows for continuous improvement of the system's performance through iterative optimization. This approach enables the system to adapt to different types of historical questions and scenarios, improving its ability to generate plausible and coherent alternate histories over time.</p>
+
+    <h3>Scalability Features</h3>
+    <ul>
+        <li>Modular architecture allows for easy addition or modification of components</li>
+        <li>Use of asynchronous programming enables handling of multiple requests simultaneously</li>
+        <li>Configurable parameters allow for fine-tuning of the system's performance based on available computational resources</li>
+    </ul>
+
+    <h3>Optimization Strategies</h3>
+    <ul>
+        <li>Recursive optimization process continuously refines the workflow based on performance feedback</li>
+        <li>Early stopping mechanism prevents overfitting and reduces unnecessary computation</li>
+        <li>Adaptive parent selection ensures diversity in the optimization process</li>
+    </ul>
+
     <h2 id="future-improvements">Future Improvements</h2>
-    <p>Potential areas for future improvement include:</p>
+    <p>While the current implementation of the HotpotQA Alternate History Generator is sophisticated, there are several areas for potential future improvements:</p>
     <ol>
-        <li>Implementing more advanced optimization algorithms</li>
-        <li>Incorporating additional external knowledge sources</li>
-        <li>Developing a user interface for easier interaction</li>
-        <li>Implementing caching mechanisms to reduce API calls</li>
-        <li>Adding support for multi-GPU processing</li>
+        <li>Implementing more advanced optimization algorithms:
+            <ul>
+                <li>Explore genetic algorithms or Bayesian optimization for workflow refinement</li>
+                <li>Implement multi-objective optimization to balance different evaluation criteria</li>
+            </ul>
+        </li>
+        <li>Incorporating additional external knowledge sources:
+            <ul>
+                <li>Integrate specialized historical databases to enhance factual accuracy</li>
+                <li>Implement a knowledge graph to capture complex historical relationships</li>
+            </ul>
+        </li>
+        <li>Developing a user interface for easier interaction:
+            <ul>
+                <li>Create a web-based interface for non-technical users</li>
+                <li>Implement visualization tools for generated alternate histories</li>
+            </ul>
+        </li>
+        <li>Implementing caching mechanisms to reduce API calls:
+            <ul>
+                <li>Develop a smart caching system for frequently used historical facts</li>
+                <li>Implement result caching for similar queries to improve response time</li>
+            </ul>
+        </li>
+        <li>Adding support for multi-GPU processing:
+            <ul>
+                <li>Parallelize the workflow execution across multiple GPUs</li>
+                <li>Implement distributed computing capabilities for handling large-scale optimizations</li>
+            </ul>
+        </li>
     </ol>
+
+    <h3>Research Directions</h3>
+    <p>Future research could focus on:</p>
+    <ul>
+        <li>Developing more sophisticated models for assessing the plausibility of alternate historical scenarios</li>
+        <li>Exploring techniques for generating counterfactual reasoning in historical contexts</li>
+        <li>Investigating methods for maintaining long-term narrative coherence in complex alternate history scenarios</li>
+        <li>Studying the ethical implications of AI-generated alternate histories and developing guidelines for responsible use</li>
+    </ul>
 
     <hr>
 
-    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike
+    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture, implementation of the AFLOW Algorithm, and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike. As the system continues to evolve, it has the potential to significantly contribute to our understanding of historical dynamics and the exploration of counterfactual scenarios.</p>
