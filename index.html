@@ -7,45 +7,132 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --link-color: #2980b9;
+            --mermaid-bg: #fff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
+            background-color: var(--background-color);
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
+
         h1, h2, h3 {
-            color: #2c3e50;
+            color: var(--secondary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
         }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        h3 {
+            font-size: 1.3em;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
         .mermaid {
-            background-color: #f8f9fa;
+            background-color: var(--mermaid-bg);
             padding: 20px;
             border-radius: 5px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
         code {
-            background-color: #f8f9fa;
+            background-color: #e7e7e7;
             padding: 2px 4px;
             border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--secondary-color);
+            margin: 30px 0;
+        }
+
+        #table-of-contents {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #table-of-contents h2 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
     <h1>HotpotQA Alternate History Generator</h1>
 
-    <h2>Table of Contents</h2>
-    <ol>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#system-architecture">System Architecture</a></li>
-        <li><a href="#key-components">Key Components</a></li>
-        <li><a href="#optimization-process">Optimization Process</a></li>
-        <li><a href="#workflow-execution">Workflow Execution</a></li>
-        <li><a href="#prompt-engineering">Prompt Engineering</a></li>
-        <li><a href="#performance-evaluation">Performance Evaluation</a></li>
-        <li><a href="#scalability-and-optimization">Scalability and Optimization</a></li>
-        <li><a href="#future-improvements">Future Improvements</a></li>
-    </ol>
+    <div id="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#system-architecture">System Architecture</a></li>
+            <li><a href="#key-components">Key Components</a></li>
+            <li><a href="#optimization-process">Optimization Process</a></li>
+            <li><a href="#workflow-execution">Workflow Execution</a></li>
+            <li><a href="#prompt-engineering">Prompt Engineering</a></li>
+            <li><a href="#performance-evaluation">Performance Evaluation</a></li>
+            <li><a href="#scalability-and-optimization">Scalability and Optimization</a></li>
+            <li><a href="#future-improvements">Future Improvements</a></li>
+        </ol>
+    </div>
 
     <h2 id="introduction">Introduction</h2>
     <p>The HotpotQA Alternate History Generator is a sophisticated system designed to create plausible alternate historical scenarios based on questions from the HotpotQA dataset. The system employs advanced natural language processing techniques and leverages large language models to generate, evaluate, and optimize alternate history narratives.</p>
@@ -293,7 +380,4 @@
 
     <hr>
 
-    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike.</p>
-
-</body>
-</html>
+    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike
