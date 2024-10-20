@@ -104,6 +104,26 @@
             margin-top: 0;
         }
 
+        #audio-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #audio-controls button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #audio-controls button:hover {
+            background-color: var(--link-color);
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -125,6 +145,15 @@
 </head>
 <body>
     <h1>HotpotQA Alternate History Generator</h1>
+
+    <div id="audio-controls">
+        <audio id="background-audio" loop>
+            <source src="https://github.com/jmanhype/HotpotQA-Alternate-History-Generator/raw/main/Aflow-HotpotQA%20Alternate%20History%20Generator.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <button onclick="document.getElementById('background-audio').play()">Play Audio</button>
+        <button onclick="document.getElementById('background-audio').pause()">Pause Audio</button>
+    </div>
 
     <div id="table-of-contents">
         <h2>Table of Contents</h2>
@@ -489,3 +518,12 @@ response = await self.graph_utils.get_graph_optimize_response(graph_optimize_nod
     <hr>
 
     <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture, implementation of the AFLOW Algorithm, and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike. As the system continues to evolve, it has the potential to significantly contribute to our understanding of historical dynamics and the exploration of counterfactual scenarios.</p>
+
+    <script>
+        // Wait for the audio to be loaded before allowing play
+        document.getElementById('background-audio').addEventListener('canplaythrough', function() {
+            document.querySelector('#audio-controls button').disabled = false;
+        });
+    </script>
+</body>
+</html>
