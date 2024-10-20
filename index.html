@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotpotQA Alternate History Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .mermaid {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HotpotQA Alternate History Generator</h1>
+
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#system-architecture">System Architecture</a></li>
+        <li><a href="#key-components">Key Components</a></li>
+        <li><a href="#optimization-process">Optimization Process</a></li>
+        <li><a href="#workflow-execution">Workflow Execution</a></li>
+        <li><a href="#prompt-engineering">Prompt Engineering</a></li>
+        <li><a href="#performance-evaluation">Performance Evaluation</a></li>
+        <li><a href="#scalability-and-optimization">Scalability and Optimization</a></li>
+        <li><a href="#future-improvements">Future Improvements</a></li>
+    </ol>
+
+    <h2 id="introduction">Introduction</h2>
+    <p>The HotpotQA Alternate History Generator is a sophisticated system designed to create plausible alternate historical scenarios based on questions from the HotpotQA dataset. The system employs advanced natural language processing techniques and leverages large language models to generate, evaluate, and optimize alternate history narratives.</p>
+
+    <h2 id="system-architecture">System Architecture</h2>
+    <p>The system follows a modular architecture with several key components working together:</p>
+
+    <h3>System Context Diagram</h3>
+    <div class="mermaid">
+    graph TD
+        A[User] -->|Uses| B[HotpotQA Alternate History Generator]
+        B -->|Calls API| C[OpenAI API]
+        B -->|Reads data from| D[HotpotQA Dataset]
+        A -->|Provides questions| D
+    </div>
+
+    <h3>Container Diagram</h3>
+    <div class="mermaid">
+    graph TD
+        A[User] -->|Initiates optimization| B[Optimizer]
+        subgraph HotpotQA Alternate History Generator
+        B -->|Executes| C[Workflow]
+        C -->|Calls API| D[OpenAI API]
+        C -->|Uses| E[Evaluator]
+        B -->|Uses| E
+        F[Data Loader] -->|Reads data from| G[HotpotQA Dataset]
+        B -->|Uses| F
+        C -->|Uses| F
+        B -->|Uses| H[Configuration Manager]
+        C -->|Uses| H
+        end
+    </div>
+
+    <h2 id="key-components">Key Components</h2>
+
+    <h3>Optimizer</h3>
+    <p>The Optimizer manages the entire optimization process, including:</p>
+    <ul>
+        <li>Loading configurations</li>
+        <li>Initializing workflows</li>
+        <li>Running multiple iterations of the optimization process</li>
+        <li>Evaluating performance</li>
+        <li>Selecting the best strategy</li>
+    </ul>
+
+    <h3>Workflow</h3>
+    <p>The Workflow executes the alternate history generation pipeline, consisting of:</p>
+    <ol>
+        <li>Historical Fact Extractor</li>
+        <li>Alternate Scenario Generator</li>
+        <li>Plausibility Checker</li>
+        <li>Narrative Coherence Enhancer</li>
+        <li>Historical Accuracy Verifier</li>
+    </ol>
+
+    <h3>Evaluator</h3>
+    <p>The Evaluator assesses the quality of generated scenarios based on multiple criteria, including plausibility, coherence, and historical accuracy.</p>
+
+    <h3>Data Loader</h3>
+    <p>The Data Loader is responsible for loading and preprocessing the HotpotQA dataset.</p>
+
+    <h3>Configuration Manager</h3>
+    <p>The Configuration Manager loads and manages system configurations, including model settings, API keys, and optimization parameters.</p>
+
+    <h2 id="optimization-process">Optimization Process</h2>
+    <p>The optimization process is a recursive algorithm that iteratively improves the alternate history generation strategy:</p>
+    <ol>
+        <li>Initialize parameters</li>
+        <li>Load the HotpotQA dataset</li>
+        <li>Create an LLM instance</li>
+        <li>Run recursive optimization</li>
+        <li>Save the best strategy and results</li>
+    </ol>
+
+    <h3>Optimization Process Diagram</h3>
+    <div class="mermaid">
+    graph TD
+        A[Start] --> B[Initialize Parameters]
+        B --> C[Load HotpotQA Dataset]
+        C --> D[Create LLM Instance]
+        D --> E[Run Recursive Optimization]
+        E --> F{Convergence?}
+        F -->|No| G[Update Parameters]
+        G --> E
+        F -->|Yes| H[Save Best Strategy]
+        H --> I[End]
+    </div>
+
+    <h3>Optimization Process Petri Net</h3>
+    <p>The following Petri net diagram illustrates the state changes and transitions in the optimization process:</p>
+    <div class="mermaid">
+    stateDiagram-v2
+        state "Parameters Initialized" as PI
+        state "Dataset Loaded" as DL
+        state "LLM Instance Created" as LIC
+        state "Optimization Running" as OR
+        state "Best Strategy Saved" as BSS
+
+        [*] --> PI
+        PI --> DL : Load Dataset
+        DL --> LIC : Create LLM
+        LIC --> OR : Start Optimization
+        OR --> OR : Update Parameters
+        OR --> BSS : Converged
+        BSS --> [*]
+    </div>
+
+    <p>In this Petri net:</p>
+    <ul>
+        <li>Places (circles) represent states or conditions.</li>
+        <li>Transitions (rectangles) represent actions that change the state.</li>
+        <li>Tokens (not visible in this static representation) would move through the net as the process executes.</li>
+    </ul>
+
+    <h2 id="workflow-execution">Workflow Execution</h2>
+    <p>The workflow execution follows these steps:</p>
+    <ol>
+        <li>Extract historical facts from the input question</li>
+        <li>Generate an alternate scenario based on the extracted facts</li>
+        <li>Check the plausibility of the generated scenario</li>
+        <li>Enhance the narrative coherence of the scenario</li>
+        <li>Verify the historical accuracy of the enhanced scenario</li>
+    </ol>
+
+    <h3>Workflow Execution Diagram</h3>
+    <div class="mermaid">
+    graph TD
+        A[Input Question] --> B[Historical Fact Extractor]
+        B --> C[Alternate Scenario Generator]
+        C --> D[Plausibility Checker]
+        D --> E[Narrative Coherence Enhancer]
+        E --> F[Historical Accuracy Verifier]
+        F --> G[Final Alternate History Scenario]
+    </div>
+
+    <h3>Workflow Execution Petri Net</h3>
+    <p>The following Petri net diagram represents the workflow execution process:</p>
+    <div class="mermaid">
+    stateDiagram-v2
+        state "Question Received" as QR
+        state "Facts Extracted" as FE
+        state "Alternate Scenario Generated" as ASG
+        state "Plausibility Checked" as PC
+        state "Coherence Enhanced" as CE
+        state "Historical Accuracy Verified" as HAV
+        state "Final Scenario Ready" as FSR
+
+        [*] --> QR
+        QR --> FE : Extract Facts
+        FE --> ASG : Generate Scenario
+        ASG --> PC : Check Plausibility
+        PC --> CE : Enhance Coherence
+        CE --> HAV : Verify Accuracy
+        HAV --> FSR : Finalize Scenario
+        FSR --> [*]
+    </div>
+
+    <p>This Petri net illustrates:</p>
+    <ul>
+        <li>The sequential flow of the workflow execution.</li>
+        <li>Each place (circle) represents a state where the process has produced an intermediate result.</li>
+        <li>Each transition (rectangle) represents an action performed by a component of the system.</li>
+    </ul>
+
+    <h2 id="prompt-engineering">Prompt Engineering</h2>
+    <p>The system uses carefully crafted prompts for each step of the workflow, designed to guide the language model in generating appropriate responses for each task.</p>
+
+    <h3>Prompt Engineering Flow</h3>
+    <div class="mermaid">
+    graph TD
+        A[Input] --> B[Prompt Template]
+        B --> C[Language Model]
+        C --> D[Generated Response]
+        D --> E[Post-processing]
+        E --> F[Final Output]
+    </div>
+
+    <h2 id="performance-evaluation">Performance Evaluation</h2>
+    <p>The system evaluates the performance of generated scenarios based on multiple criteria:</p>
+    <ul>
+        <li>Plausibility score</li>
+        <li>Coherence score (number of changes made to improve coherence)</li>
+        <li>Historical accuracy score</li>
+    </ul>
+    <p>These scores are combined to produce an overall performance metric, which guides the optimization process.</p>
+
+    <h3>Evaluation Process</h3>
+    <div class="mermaid">
+    graph TD
+        A[Generated Scenario] --> B[Plausibility Scoring]
+        A --> C[Coherence Scoring]
+        A --> D[Historical Accuracy Scoring]
+        B --> E[Overall Performance Metric]
+        C --> E
+        D --> E
+        E --> F[Optimization Feedback]
+    </div>
+
+    <h3>Evaluation Process Petri Net</h3>
+    <p>The following Petri net diagram illustrates the evaluation process:</p>
+    <div class="mermaid">
+    stateDiagram-v2
+        state "Scenario Generated" as SG
+        state "Plausibility Scored" as PS
+        state "Coherence Scored" as CS
+        state "Historical Accuracy Scored" as HAS
+        state "Overall Metric Calculated" as OMC
+        state "Feedback Provided" as FP
+
+        [*] --> SG
+        SG --> PS : Evaluate Plausibility
+        SG --> CS : Evaluate Coherence
+        SG --> HAS : Evaluate Accuracy
+        PS --> OMC : Combine Scores
+        CS --> OMC : Combine Scores
+        HAS --> OMC : Combine Scores
+        OMC --> FP : Generate Feedback
+        FP --> [*]
+    </div>
+
+    <p>This Petri net shows:</p>
+    <ul>
+        <li>Parallel evaluation of different aspects of the generated scenario.</li>
+        <li>Convergence of individual scores into an overall metric.</li>
+        <li>The final step of providing feedback for the optimization process.</li>
+    </ul>
+
+    <h2 id="scalability-and-optimization">Scalability and Optimization</h2>
+    <p>The system is designed to be scalable and optimizable:</p>
+    <ul>
+        <li>Uses asynchronous programming for efficient API calls</li>
+        <li>Adjustable optimization process parameters</li>
+        <li>Support for different language models</li>
+    </ul>
+
+    <h2 id="future-improvements">Future Improvements</h2>
+    <p>Potential areas for future improvement include:</p>
+    <ol>
+        <li>Implementing more advanced optimization algorithms</li>
+        <li>Incorporating additional external knowledge sources</li>
+        <li>Developing a user interface for easier interaction</li>
+        <li>Implementing caching mechanisms to reduce API calls</li>
+        <li>Adding support for multi-GPU processing</li>
+    </ol>
+
+    <hr>
+
+    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike.</p>
+
+</body>
+</html>
