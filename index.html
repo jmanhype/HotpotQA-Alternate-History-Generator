@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HotpotQA Alternate History Generator</title>
+    <title>HotpotQA Alternate History Generator | AI-Powered Historical Scenarios</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Interactive documentation for the HotpotQA Alternate History Generator - a sophisticated AI system that creates plausible alternate historical scenarios using the AFLOW algorithm and large language models.">
+    <meta name="keywords" content="HotpotQA, alternate history, AI, AFLOW algorithm, NLP, historical scenarios, language models, machine learning">
+    <meta name="author" content="HotpotQA Research Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmanhype.github.io/HotpotQA-Alternate-History-Generator/">
+    <meta property="og:title" content="HotpotQA Alternate History Generator">
+    <meta property="og:description" content="Explore how AI creates plausible alternate historical scenarios using advanced NLP techniques and the AFLOW optimization algorithm.">
+    <meta property="og:site_name" content="HotpotQA Alternate History Generator">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jmanhype.github.io/HotpotQA-Alternate-History-Generator/">
+    <meta property="twitter:title" content="HotpotQA Alternate History Generator">
+    <meta property="twitter:description" content="Explore how AI creates plausible alternate historical scenarios using advanced NLP techniques and the AFLOW optimization algorithm.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jmanhype.github.io/HotpotQA-Alternate-History-Generator/">
+
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <style>
@@ -124,6 +147,25 @@
             background-color: var(--link-color);
         }
 
+        footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 2px solid var(--secondary-color);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer small {
+            color: #666;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -144,18 +186,20 @@
     </style>
 </head>
 <body>
-    <h1>HotpotQA Alternate History Generator</h1>
+    <header>
+        <h1>HotpotQA Alternate History Generator</h1>
+    </header>
 
-    <div id="audio-controls">
-        <audio id="background-audio" loop>
+    <nav id="audio-controls" aria-label="Audio controls">
+        <audio id="background-audio" loop aria-label="Background narration audio">
             <source src="https://github.com/jmanhype/HotpotQA-Alternate-History-Generator/raw/main/Aflow-HotpotQA%20Alternate%20History%20Generator.wav" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
-        <button onclick="document.getElementById('background-audio').play()">Play Audio</button>
-        <button onclick="document.getElementById('background-audio').pause()">Pause Audio</button>
-    </div>
+        <button onclick="document.getElementById('background-audio').play()" aria-label="Play background narration">Play Audio</button>
+        <button onclick="document.getElementById('background-audio').pause()" aria-label="Pause background narration">Pause Audio</button>
+    </nav>
 
-    <div id="table-of-contents">
+    <nav id="table-of-contents" aria-label="Table of contents">
         <h2>Table of Contents</h2>
         <ol>
             <li><a href="#introduction">Introduction</a></li>
@@ -169,9 +213,11 @@
             <li><a href="#scalability-and-optimization">Scalability and Optimization</a></li>
             <li><a href="#future-improvements">Future Improvements</a></li>
         </ol>
-    </div>
+    </nav>
 
-    <h2 id="introduction">Introduction</h2>
+    <main>
+    <section id="introduction" aria-labelledby="introduction-heading">
+    <h2 id="introduction-heading">Introduction</h2>
     <p>The HotpotQA Alternate History Generator is a sophisticated system designed to create plausible alternate historical scenarios based on questions from the HotpotQA dataset. The system employs advanced natural language processing techniques and leverages large language models to generate, evaluate, and optimize alternate history narratives.</p>
 
     <h2 id="system-architecture">System Architecture</h2>
@@ -515,9 +561,14 @@ response = await self.graph_utils.get_graph_optimize_response(graph_optimize_nod
         <li>Studying the ethical implications of AI-generated alternate histories and developing guidelines for responsible use</li>
     </ul>
 
-    <hr>
+    </section>
+    </main>
 
-    <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture, implementation of the AFLOW Algorithm, and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike. As the system continues to evolve, it has the potential to significantly contribute to our understanding of historical dynamics and the exploration of counterfactual scenarios.</p>
+    <footer>
+        <hr>
+        <p>This HotpotQA Alternate History Generator leverages advanced NLP techniques and large language models to create plausible alternate historical scenarios. Its modular architecture, implementation of the AFLOW Algorithm, and optimization capabilities make it a powerful tool for researchers and history enthusiasts alike. As the system continues to evolve, it has the potential to significantly contribute to our understanding of historical dynamics and the exploration of counterfactual scenarios.</p>
+        <p><small>&copy; 2024 HotpotQA Research Team. <a href="https://github.com/jmanhype/HotpotQA-Alternate-History-Generator" aria-label="View source code on GitHub">View on GitHub</a></small></p>
+    </footer>
 
     <script>
         // Wait for the audio to be loaded before allowing play
